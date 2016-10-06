@@ -1,0 +1,3 @@
+eb0c93c460fac5cca0fd789d17c52daa data/quicksort.hs
+3d1b22d2ccb7606ada5267e5175d2601 data/path/to/file.txt
+ca2fc0fd736392267238a29636097e5d data/other/path/to/Software_Sustainability_DANS_NLeSC_2016.pdf
