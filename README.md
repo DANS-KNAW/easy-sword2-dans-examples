@@ -85,9 +85,12 @@ To zip the example bag, `cd` to the `examples` subdirectory and execute the foll
 
     zip -r example.zip example-bag
 
-Make sure that the result zip contains a directory called `example-bag` at the top of its hierarchy. The output of a `zipinfo` should be similar to this: 
-
+Make sure that the result zip contains a directory called `example-bag` at the top of its hierarchy. The output of
+ 
     zipinfo examples/example.zip
+
+should be similar to this: 
+
     Archive:  examples/example.zip   4293 bytes   13 files
     drwxr-xr-x  3.0 unx        0 bx stor  8-Jul-16 13:22 example-bag/
     -rw-r--r--  3.0 unx       63 tx defN  6-Jul-16 16:18 example-bag/bag-info.txt
