@@ -1,3 +1,0 @@
-https://github.com/DANS-KNAW/easy-sword2-dans-examples/blob/master/src/main/resources/fetch-files/draft%20kunze%20bagit%2013.pdf  65448  data/path/bagit_spec.pdf
-https://github.com/DANS-KNAW/easy-sword2-dans-examples/blob/master/src/main/resources/fetch-files/LorumIpsum.md  2280  data/other/path/to/LorumIpsum.md
-https://github.com/DANS-KNAW/easy-sword2-dans-examples/blob/master/src/main/resources/fetch-files/empty-file.txt  0  data/path/to/folder/with/empty-file.txt
