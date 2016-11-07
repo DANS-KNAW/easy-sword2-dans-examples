@@ -15,7 +15,6 @@
  */
 package nl.knaw.dans.easy.sword2examples;
 
-import org.apache.abdera.i18n.iri.IRI;
 import org.apache.abdera.model.Entry;
 import org.apache.abdera.model.Link;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -23,6 +22,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.URI;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
 
@@ -35,7 +35,7 @@ public class ContinuedDeposit {
 
         // 0. Read command line arguments
         final String bagFileName = args[0];
-        final IRI colIri = new IRI(args[1]);
+        final URI colIri = new URI(args[1]);
         final String uid = args[2];
         final String pw = args[3];
         final int chunkSize = Integer.parseInt(args[4]);
@@ -47,7 +47,7 @@ public class ContinuedDeposit {
         DigestInputStream dis = new DigestInputStream(fis, md);
 
         // 2. Post first chunk bag to Col-IRI
-        CloseableHttpClient http = Common.createHttpClient(colIri.toURI(), uid, pw);
+        CloseableHttpClient http = Common.createHttpClient(colIri, uid, pw);
         CloseableHttpResponse response = Common.sendChunk(dis, chunkSize, "POST", colIri,  "bag.zip.1", "application/octet-stream", http, chunkSize < bag.length());
 
 
@@ -62,9 +62,9 @@ public class ContinuedDeposit {
         System.out.println("SUCCESS. Deposit receipt follows:");
         System.out.println(bodyText);
 
-        Entry receipt = Common.parseEntry(bodyText);
+        Entry receipt = Common.parse(bodyText);
         Link seIriLink = receipt.getLink("edit");
-        IRI seIri = seIriLink.getHref();
+        URI seIri = seIriLink.getHref().toURI();
 
         int remaining = (int) bag.length() - chunkSize;
         int count = 2;
@@ -84,9 +84,9 @@ public class ContinuedDeposit {
 
         // 4. Get the statement URL. This is the URL from which to retrieve the current status of the deposit.
         System.out.println("Retrieving Statement IRI (Stat-IRI) from deposit receipt ...");
-        receipt = Common.parseEntry(bodyText);
+        receipt = Common.parse(bodyText);
         Link statIriLink = receipt.getLink("http://purl.org/net/sword/terms/statement");
-        IRI statIri = statIriLink.getHref();
+        URI statIri = statIriLink.getHref().toURI();
         System.out.println("Stat-IRI = " + statIri);
 
         // 5. Check statement every ten seconds (a bit too frantic, but okay for this test). If status changes:

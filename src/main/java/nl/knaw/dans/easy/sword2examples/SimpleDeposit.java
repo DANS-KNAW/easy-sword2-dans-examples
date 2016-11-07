@@ -15,7 +15,6 @@
  */
 package nl.knaw.dans.easy.sword2examples;
 
-import org.apache.abdera.i18n.iri.IRI;
 import org.apache.abdera.model.Entry;
 import org.apache.abdera.model.Link;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -23,6 +22,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.URI;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
 
@@ -42,7 +42,7 @@ public class SimpleDeposit {
 
         // 0. Read command line arguments
         final String bagFileName = args[0];
-        final IRI colIri = new IRI(args[1]);
+        final URI colIri = new URI(args[1]);
         final String uid = args[2];
         final String pw = args[3];
 
@@ -53,7 +53,7 @@ public class SimpleDeposit {
         DigestInputStream dis = new DigestInputStream(fis, md);
 
         // 2. Post entire bag to Col-IRI
-        CloseableHttpClient http = Common.createHttpClient(colIri.toURI(), uid, pw);
+        CloseableHttpClient http = Common.createHttpClient(colIri, uid, pw);
         CloseableHttpResponse response = Common.sendChunk(dis, (int) bag.length(), "POST", colIri, "bag.zip", "application/zip", http, false);
 
         // 3. Check the response. If transfer corrupt (MD5 doesn't check out), report and exit.
@@ -69,9 +69,9 @@ public class SimpleDeposit {
 
         // 4. Get the statement URL. This is the URL from which to retrieve the current status of the deposit.
         System.out.println("Retrieving Statement IRI (Stat-IRI) from deposit receipt ...");
-        Entry receipt = Common.parseEntry(bodyText);
+        Entry receipt = Common.parse(bodyText);
         Link statLink = receipt.getLink("http://purl.org/net/sword/terms/statement");
-        IRI statIri = statLink.getHref();
+        URI statIri = statLink.getHref().toURI();
         System.out.println("Stat-IRI = " + statIri);
 
         // 5. Check statement every ten seconds (a bit too frantic, but okay for this test). If status changes:
