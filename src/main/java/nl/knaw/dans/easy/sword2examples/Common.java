@@ -69,14 +69,14 @@ public class Common {
         return receipt.getRoot();
     }
 
-    static void trackDeposit(CloseableHttpClient http, URI statIri) throws Exception {
+    static void trackDeposit(CloseableHttpClient http, URI statUri) throws Exception {
         CloseableHttpResponse response;
         String bodyText;
         System.out.println("Start polling Stat-IRI for the current status of the deposit, waiting 10 seconds before every request ...");
         while (true) {
             Thread.sleep(10000);
             System.out.print("Checking deposit status ... ");
-            response = http.execute(new HttpGet(statIri));
+            response = http.execute(new HttpGet(statUri));
             bodyText = readEntityAsString(response.getEntity());
             Feed statement = parse(bodyText);
             List<Category> states = statement.getCategories("http://purl.org/net/sword/terms/state");
@@ -115,17 +115,17 @@ public class Common {
         return bos.toByteArray();
     }
 
-    public static CloseableHttpClient createHttpClient(URI iri, String uid, String pw) {
+    public static CloseableHttpClient createHttpClient(URI uri, String uid, String pw) {
         BasicCredentialsProvider credsProv = new BasicCredentialsProvider();
-        credsProv.setCredentials(new AuthScope(iri.getHost(), iri.getPort()), new UsernamePasswordCredentials(uid, pw));
+        credsProv.setCredentials(new AuthScope(uri.getHost(), uri.getPort()), new UsernamePasswordCredentials(uid, pw));
         return HttpClients.custom().setDefaultCredentialsProvider(credsProv).build();
     }
 
-    public static CloseableHttpResponse sendChunk(DigestInputStream dis, int size, String method, URI iri, String filename, String mimeType, CloseableHttpClient http, boolean inProgress) throws Exception {
-        // System.out.println(String.format("Sending chunk to %s, filename = %s, chunk size = %d, MIME-Type = %s, In-Progress = %s ... ", iri.toString(), filename, size, mimeType, Boolean.toString(inProgress)));
+    public static CloseableHttpResponse sendChunk(DigestInputStream dis, int size, String method, URI uri, String filename, String mimeType, CloseableHttpClient http, boolean inProgress) throws Exception {
+        // System.out.println(String.format("Sending chunk to %s, filename = %s, chunk size = %d, MIME-Type = %s, In-Progress = %s ... ", uri.toString(), filename, size, mimeType, Boolean.toString(inProgress)));
         byte[] chunk = readChunk(dis, size);
         String md5 = new String(Hex.encodeHex(dis.getMessageDigest().digest()));
-        HttpUriRequest request = RequestBuilder.create(method).setUri(iri).setConfig(RequestConfig.custom()
+        HttpUriRequest request = RequestBuilder.create(method).setUri(uri).setConfig(RequestConfig.custom()
         /*
          * When using an HTTPS-connection this EXPECT-CONTINUE must be enabled, otherwise buffer overflow may follow
          */

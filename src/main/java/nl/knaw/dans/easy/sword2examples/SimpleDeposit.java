@@ -15,6 +15,7 @@
  */
 package nl.knaw.dans.easy.sword2examples;
 
+import org.apache.abdera.i18n.iri.IRI;
 import org.apache.abdera.model.Entry;
 import org.apache.abdera.model.Link;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -42,7 +43,7 @@ public class SimpleDeposit {
 
         // 0. Read command line arguments
         final String bagFileName = args[0];
-        final URI colIri = new URI(args[1]);
+        final IRI colIri = new IRI(args[1]);
         final String uid = args[2];
         final String pw = args[3];
 
@@ -53,8 +54,8 @@ public class SimpleDeposit {
         DigestInputStream dis = new DigestInputStream(fis, md);
 
         // 2. Post entire bag to Col-IRI
-        CloseableHttpClient http = Common.createHttpClient(colIri, uid, pw);
-        CloseableHttpResponse response = Common.sendChunk(dis, (int) bag.length(), "POST", colIri, "bag.zip", "application/zip", http, false);
+        CloseableHttpClient http = Common.createHttpClient(colIri.toURI(), uid, pw);
+        CloseableHttpResponse response = Common.sendChunk(dis, (int) bag.length(), "POST", colIri.toURI(), "bag.zip", "application/zip", http, false);
 
         // 3. Check the response. If transfer corrupt (MD5 doesn't check out), report and exit.
         String bodyText = Common.readEntityAsString(response.getEntity());
@@ -71,12 +72,12 @@ public class SimpleDeposit {
         System.out.println("Retrieving Statement IRI (Stat-IRI) from deposit receipt ...");
         Entry receipt = Common.parse(bodyText);
         Link statLink = receipt.getLink("http://purl.org/net/sword/terms/statement");
-        URI statIri = statLink.getHref().toURI();
+        IRI statIri = statLink.getHref();
         System.out.println("Stat-IRI = " + statIri);
 
         // 5. Check statement every ten seconds (a bit too frantic, but okay for this test). If status changes:
         // report new status. If status is an error (INVALID, REJECTED, FAILED) or ARCHIVED: exit.
-        Common.trackDeposit(http, statIri);
+        Common.trackDeposit(http, statIri.toURI());
     }
 
 }
