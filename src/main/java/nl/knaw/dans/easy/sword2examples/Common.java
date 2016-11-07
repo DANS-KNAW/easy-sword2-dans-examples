@@ -127,7 +127,7 @@ public class Common {
         String md5 = new String(Hex.encodeHex(dis.getMessageDigest().digest()));
         HttpUriRequest request = RequestBuilder.create(method).setUri(uri).setConfig(RequestConfig.custom()
         /*
-         * When using an HTTPS-connection this EXPECT-CONTINUE must be enabled, otherwise buffer overflow may follow
+         * When using an HTTPS-connection EXPECT-CONTINUE must be enabled, otherwise buffer overflow may follow
          */
                 .setExpectContinueEnabled(true).build()) //
                     .addHeader("Content-Disposition", String.format("attachment; filename=%s", filename)) //
