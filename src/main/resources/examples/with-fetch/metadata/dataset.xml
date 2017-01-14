@@ -26,6 +26,7 @@
 	<ddm:dcmiMetadata>
         <dcterms:hasVersion>1.1</dcterms:hasVersion>
         <dcterms:modified>2015-09-08</dcterms:modified>
+        <dcterms:available>2015-09-08</dcterms:available>
         <dcterms:identifier xsi:type="id-type:DOI">10.5072/test-other-access-doi</dcterms:identifier>
         <dcterms:license xsi:type="dcterms:URI">http://opensource.org/licenses/MIT</dcterms:license>
         <dcterms:rightsHolder>I Lastname</dcterms:rightsHolder>

@@ -30,6 +30,7 @@
         <ddm:accessRights>NO_ACCESS</ddm:accessRights>
     </ddm:profile>
     <ddm:dcmiMetadata>
+        <dcterms:available>2015-08-01</dcterms:available>
         <dcterms:identifier xsi:type="id-type:DOI">10.5072/test-other-access-doi</dcterms:identifier>
     </ddm:dcmiMetadata>
 </ddm:DDM>
