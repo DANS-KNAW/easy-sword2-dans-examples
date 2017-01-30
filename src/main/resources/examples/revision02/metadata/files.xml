@@ -3,7 +3,7 @@
     <file filepath="data/README.md">
         <dcterms:format>text/plain</dcterms:format>
     </file>
-    <file filepath="data/random images/image01.png">
+    <file filepath="data/random images/image01-renamed.png">
         <dcterms:title>The first image</dcterms:title>
         <dcterms:description>This description will be archived, but not displayed anywhere in the Web-UI</dcterms:description>
         <dcterms:format>image/png</dcterms:format>

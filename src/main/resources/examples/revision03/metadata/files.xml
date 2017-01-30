@@ -21,5 +21,9 @@
         <dcterms:format>text/plain</dcterms:format>
         <dcterms:created>2016-11-09</dcterms:created>
     </file>
+    <file filepath="data/bit.jpg">
+        <dcterms:format>image/jpet</dcterms:format>
+        <dcterms:created>2016-11-09</dcterms:created>
+    </file>
 </files>
 
