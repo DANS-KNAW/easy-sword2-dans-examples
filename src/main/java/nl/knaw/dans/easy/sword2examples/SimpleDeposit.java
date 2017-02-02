@@ -26,6 +26,7 @@ import java.io.FileInputStream;
 import java.net.URI;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
+import java.util.UUID;
 
 public class SimpleDeposit {
 
@@ -47,8 +48,11 @@ public class SimpleDeposit {
         final String uid = args[2];
         final String pw = args[3];
 
+        depositPackage(new File(bagFileName), colIri, uid, pw);
+    }
+
+    public static URI depositPackage(File bag, IRI colIri, String uid, String pw) throws Exception {
         // 1. Set up stream for calculating MD5
-        File bag = new File(bagFileName);
         FileInputStream fis = new FileInputStream(bag);
         MessageDigest md = MessageDigest.getInstance("MD5");
         DigestInputStream dis = new DigestInputStream(fis, md);
@@ -77,7 +81,6 @@ public class SimpleDeposit {
 
         // 5. Check statement every ten seconds (a bit too frantic, but okay for this test). If status changes:
         // report new status. If status is an error (INVALID, REJECTED, FAILED) or ARCHIVED: exit.
-        Common.trackDeposit(http, statIri.toURI());
+        return Common.trackDeposit(http, statIri.toURI());
     }
-
 }

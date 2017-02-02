@@ -41,8 +41,12 @@ public class ContinuedDeposit {
         final String pw = args[3];
         final int chunkSize = Integer.parseInt(args[4]);
 
-        // 1. Set up stream for calculating MD5
         File bag = new File(bagFileName);
+        depositPackage(new File(bagFileName), colIri, uid, pw, chunkSize);
+    }
+
+    public static URI depositPackage(File bag, IRI colIri, String uid, String pw, int chunkSize) throws Exception {
+        // 1. Set up stream for calculating MD5
         FileInputStream fis = new FileInputStream(bag);
         MessageDigest md = MessageDigest.getInstance("MD5");
         DigestInputStream dis = new DigestInputStream(fis, md);
@@ -91,6 +95,6 @@ public class ContinuedDeposit {
 
         // 5. Check statement every ten seconds (a bit too frantic, but okay for this test). If status changes:
         // report new status. If status is an error (INVALID, REJECTED, FAILED) or ARCHIVED: exit.
-        Common.trackDeposit(http, statIri.toURI());
+        return Common.trackDeposit(http, statIri.toURI());
     }
 }
