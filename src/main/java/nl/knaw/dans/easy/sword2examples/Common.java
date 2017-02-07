@@ -30,6 +30,7 @@ import org.apache.abdera.model.Entry;
 import org.apache.abdera.model.Feed;
 import org.apache.abdera.parser.Parser;
 import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.auth.AuthScope;
@@ -175,5 +176,12 @@ public class Common {
         ZipFile zf = new ZipFile(zipFile);
         ZipParameters parameters = new ZipParameters();
         zf.addFolder(dir, parameters);
+    }
+
+    public static File copyToTarget(File dir) throws Exception {
+        File dirInTarget = new File("target", dir.getName());
+        FileUtils.deleteQuietly(dirInTarget);
+        FileUtils.copyDirectory(dir, dirInTarget);
+        return dirInTarget;
     }
 }
