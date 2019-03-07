@@ -36,7 +36,7 @@
     <ddm:dcmiMetadata>
         <dcterms:hasVersion>1.1</dcterms:hasVersion>
         <dcterms:modified>2015-09-08</dcterms:modified>
-        <dcterms:identifier xsi:type="id-type:DOI">10.5072/dans-xrf-w4vs</dcterms:identifier>
+        <dcterms:identifier xsi:type="id-type:DOI">10.5072/dans-inva-lid</dcterms:identifier>
         <dcterms:license xsi:type="dcterms:URI">http://opensource.org/licenses/MIT</dcterms:license>
         <dcterms:rightsHolder>I Lastname</dcterms:rightsHolder>
     </ddm:dcmiMetadata>
