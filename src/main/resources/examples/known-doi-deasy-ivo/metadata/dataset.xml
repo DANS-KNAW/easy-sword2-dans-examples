@@ -31,6 +31,6 @@
         <ddm:accessRights>NO_ACCESS</ddm:accessRights>
     </ddm:profile>
     <ddm:dcmiMetadata>
-        <dcterms:identifier xsi:type="id-type:DOI">10.5072/test-other-access-doi</dcterms:identifier>
+        <dcterms:identifier xsi:type="id-type:DOI">10.5072/dans-x6f-kf66</dcterms:identifier>
     </ddm:dcmiMetadata>
 </ddm:DDM>
