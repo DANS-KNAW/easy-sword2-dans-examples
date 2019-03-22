@@ -1,5 +1,0 @@
-Payload-Oxum: 22.1
-Bagging-Date: 2019-03-15
-Is-Version-Of: urn:uuid:cc6d9350-26fe-4005-b0d6-b2143bd9a1b2
-Bag-Size: 2.3 KB
-Created: 2018-11-12T23:41:11.000+00:00
