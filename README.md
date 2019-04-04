@@ -76,6 +76,15 @@ The examples take one or more directories as input parameters. These directories
 copies each directory to the `target`-folder of the project, zips it and sends it to the specified SWORDv2 service. The copying step 
 has been built in because in some examples the bag must be modified before it is sent.
 
+### Example Bags
+
+Example bags can be found in the [resources directory], these are categorized by the [flow] which they are designed for.
+The primary difference between the no-access flow and the other flows is that the no-access flow requires a DOI to be present in the metadata.xml.
+The other flows only accept a DOI in the metadata if the bag is intended as an update to the existing dataset.
+
+[resources directory]: https://github.com/DANS-KNAW/easy-sword2-dans-examples/tree/master/src/main/resources
+[flows]: https://github.com/DANS-KNAW/easy-specs/blob/master/easy-ingest-flow/easy-ingest-flow.md
+
 ### SimpleDeposit.java
 
 To run the `SimpleDeposit` example, execute the following command, of course after filling in the username and password of your SWORD-enabled
