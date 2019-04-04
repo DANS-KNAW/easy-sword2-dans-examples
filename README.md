@@ -83,7 +83,7 @@ The primary difference between the no-access flow and the other flows is that th
 The other flows only accept a DOI in the metadata if the bag is intended as an update to the existing dataset.
 
 [resources directory]: https://github.com/DANS-KNAW/easy-sword2-dans-examples/tree/master/src/main/resources
-[flows]: https://github.com/DANS-KNAW/easy-specs/blob/master/easy-ingest-flow/easy-ingest-flow.md
+[flow]: https://github.com/DANS-KNAW/easy-specs/blob/master/easy-ingest-flow/easy-ingest-flow.md
 
 ### SimpleDeposit.java
 
