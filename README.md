@@ -76,13 +76,6 @@ The examples take one or more directories as input parameters. These directories
 copies each directory to the `target`-folder of the project, zips it and sends it to the specified SWORDv2 service. The copying step 
 has been built in because in some examples the bag must be modified before it is sent.
 
-### Changing the Example Bags
-
-To change the bag or make your own bags see [this wiki page].
-
-[this wiki page]: https://github.com/DANS-KNAW/easy-sword2/wiki/HOWTO---Create-an-EASY-Deposit-Bag
-
-
 ### SimpleDeposit.java
 
 To run the `SimpleDeposit` example, execute the following command, of course after filling in the username and password of your SWORD-enabled
