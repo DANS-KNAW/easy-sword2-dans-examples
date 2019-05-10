@@ -1,3 +1,0 @@
-Zip this file with:
-
-zip single.zip single-regular-file.txt
