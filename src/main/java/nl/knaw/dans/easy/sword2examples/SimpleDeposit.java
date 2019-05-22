@@ -34,11 +34,11 @@ public class SimpleDeposit {
      * Sends a bag to the easy-sword2 service and tracks its status until it is archived or failure is reported.
      * 
      * @param args
-     *        0. collection URL (Col-IRI), 1. EASY user name, 2. EASY password, 3. zipped bag to send,
+     *        0. collection URL (Col-IRI), 1. EASY user name, 2. EASY password, 3. bag to send (a directory or a zip file),
      */
     public static void main(String[] args) throws Exception {
         if (args.length != 4) {
-            System.err.println("Usage: java nl.knaw.dans.easy.sword2examples.SimpleDeposit <Col-IRI> <EASY uid> <EASY passwd> <bag dirname>");
+            System.err.println("Usage: java nl.knaw.dans.easy.sword2examples.SimpleDeposit <Col-IRI> <EASY uid> <EASY passwd> <bag file/dir>");
             System.exit(1);
         }
 
@@ -46,17 +46,22 @@ public class SimpleDeposit {
         final IRI colIri = new IRI(args[0]);
         final String uid = args[1];
         final String pw = args[2];
-        final String bagDirName = args[3];
+        final String bagFile = args[3];
 
-        File tempCopy = Common.copyToTarget(new File(bagDirName));
+        File tempCopy = Common.copyToTarget(new File(bagFile));
         depositPackage(tempCopy, colIri, uid, pw);
     }
 
-    public static URI depositPackage(File bagDir, IRI colIri, String uid, String pw) throws Exception {
-        // 0. Zip the bagDir
-        File zipFile = new File(bagDir.getAbsolutePath() + ".zip");
-        zipFile.delete();
-        Common.zipDirectory(bagDir, zipFile);
+    public static URI depositPackage(File bag, IRI colIri, String uid, String pw) throws Exception {
+        // 0. Zip the bag if it isn't yet.
+        File zipFile = null;
+        if (bag.isDirectory()) {
+            zipFile = new File(bag.getAbsolutePath() + ".zip");
+            zipFile.delete();
+            Common.zipDirectory(bag, zipFile);
+        } else {
+            zipFile = bag;
+        }
 
         // 1. Set up stream for calculating MD5
         MessageDigest md = MessageDigest.getInstance("MD5");
