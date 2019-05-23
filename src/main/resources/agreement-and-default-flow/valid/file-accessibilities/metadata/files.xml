@@ -2,9 +2,6 @@
 <files xmlns:dcterms="http://purl.org/dc/terms/" xmlns="http://easy.dans.knaw.nl/schemas/bag/metadata/files/"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://easy.dans.knaw.nl/schemas/bag/metadata/files/ https://easy.dans.knaw.nl/schemas/bag/metadata/files/files.xsd">
-    <file filepath="data/README.md">
-        <dcterms:format>text/plain</dcterms:format>
-    </file>
     <file filepath="data/random images/image01.png">
         <dcterms:title>The first image</dcterms:title>
         <dcterms:description>This description will be archived, but not displayed anywhere in the Web-UI</dcterms:description>
