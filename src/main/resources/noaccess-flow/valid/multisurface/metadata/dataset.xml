@@ -56,7 +56,7 @@
         <dcterms:temporal>-1500 until -800</dcterms:temporal>
         <dc:language xsi:type="dcterms:ISO639-2">eng</dc:language>
         <dc:publisher xmlns:dc="http://purl.org/dc/terms/">DANS/KNAW</dc:publisher>
-        <dcterms:identifier xsi:type="id-type:DOI">10.5072/multisurface-example</dcterms:identifier>
+        <dcterms:identifier xsi:type="id-type:DOI">10.17026/test-multisurface-example</dcterms:identifier>
         <dc:type xsi:type="dcterms:DCMIType" xmlns:dc="http://purl.org/dc/terms/">Dataset</dc:type>
         <dc:format xsi:type="dcterms:IMT">image/jpeg</dc:format>
         <dc:format xsi:type="dcterms:IMT">application/xml</dc:format>

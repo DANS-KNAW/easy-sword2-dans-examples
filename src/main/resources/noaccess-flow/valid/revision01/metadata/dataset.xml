@@ -27,7 +27,7 @@
         <ddm:accessRights>NO_ACCESS</ddm:accessRights>
     </ddm:profile>
     <ddm:dcmiMetadata>
-        <dcterms:identifier xsi:type="id-type:DOI">10.5072/revision-example</dcterms:identifier>
+        <dcterms:identifier xsi:type="id-type:DOI">10.17026/test-revision-example</dcterms:identifier>
         <dcterms:hasVersion>1.1</dcterms:hasVersion>
         <dcterms:modified>2015-09-08</dcterms:modified>
         <dcterms:license xsi:type="dcterms:URI">http://opensource.org/licenses/MIT</dcterms:license>

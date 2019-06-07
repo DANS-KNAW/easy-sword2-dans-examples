@@ -27,7 +27,7 @@
         <ddm:accessRights>OPEN_ACCESS</ddm:accessRights>
     </ddm:profile>
     <ddm:dcmiMetadata>
-        <dcterms:identifier xsi:type="id-type:DOI">10.5072/embargo-example</dcterms:identifier>
+        <dcterms:identifier xsi:type="id-type:DOI">10.17026/test-embargo-example</dcterms:identifier>
         <dcterms:hasVersion>1.1</dcterms:hasVersion>
         <dcterms:modified>2019-03-18</dcterms:modified>
         <dcterms:license xsi:type="dcterms:URI">http://opensource.org/licenses/MIT</dcterms:license>
