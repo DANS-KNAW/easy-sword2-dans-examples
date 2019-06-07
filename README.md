@@ -37,7 +37,7 @@ acceptance test server at https://act.easy.dans.knaw.nl/.
 4. From your account manager at DANS inquire which flow the account is configured for.
 
 
-###Flow types
+### Flow types
 
 The SWORD service will automatically select a flow for the data when a deposit is submitted. The flow that is selected depends on the agreement between the client company and DANS. The following is a list of the available flows, with a general description of each:
 
