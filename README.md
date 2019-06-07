@@ -21,7 +21,8 @@ The following diagram details this a bit further.
 4. EASY Ingest Flow performs checks and transformations and creates a dataset in Archival Storage.
 5. EASY Ingest Flow reports back success or failure to SWORD Service.
 
-3-5. During this time the Client periodically checks the deposit state through the URL received in step 2. If the final state of `ARCHIVED` is reached, the process is concluded successfully. Other outcomes may be `INVALID` (the package did not meet the requirements of the SWORD service) or `REJECTED` (the package did not meet the requirements of the EASY Ingest Flow). In case the server encountered an unknown error `FAILED` will be returned. 
+3-5. During this time the Client periodically checks the deposit state through the URL received in step 2.
+If the final state of `ARCHIVED` is reached, the process is concluded successfully. Other outcomes may be `INVALID` (the package did not meet the requirements of the SWORD service) or `REJECTED` (the package did not meet the requirements of the EASY Ingest Flow). In case the server encountered an unknown error `FAILED` will be returned.
 
 
 
@@ -107,11 +108,15 @@ These classes can be broken down into the following types:
 	
 ### Deposit Packaging
 
-The easy-sword2 service requires deposits to be sent as zipped bags (see [BagIt]). The EASY archive adds some extra requirements. These are documented on the [EASY SWORDv2 deposit documentation page] and [DANS BagIt Profile]. 
+The easy-sword2 service requires deposits to be sent as zipped bags (see [BagIt]).
+The EASY archive adds some extra requirements.
+These are documented on the [EASY SWORDv2 deposit documentation page] and [DANS BagIt Profile].
+A command line tool called [xmllint] can be used to validate xml files locally.
   
 [EASY SWORDv2 deposit documentation page]: https://easy.dans.knaw.nl/doc/sword2.html
 [BagIt]: https://datatracker.ietf.org/doc/draft-kunze-bagit
 [DANS BagIt Profile]: https://github.com/DANS-KNAW/dans-bagit-profile/blob/master/versions/0.0.0.md
+[xmllint] : http://xmlsoft.org/xmllint.html
 
 ### Example Bags
 

@@ -50,8 +50,9 @@ A short summary of each of the resources follows:
 
 ## Modifying The Examples
 
-The SWORD2 client only accepts bags that adhere to the [DANS BagIt profile], it is recommended to make use of the bagit command-line tool to manage and update the different bagit-files which must be present. Some useful commands provided by this tool are:
-
+The SWORD2 client only accepts bags that adhere to the [DANS BagIt profile], it is recommended to make use of the bagit command-line tool to manage and update the different bagit-files which must be present.
+This tool can be downloaded through homebrew on MacOS.
+Some useful commands provided by this tool are:
 ```
 bagit makecomplete <source> <dest> --payloadmanifestalgorithm SHA1
 bagit verifyvalid <bag>
