@@ -2,8 +2,9 @@ Example Resources
 -----------------
 
 These example resources consist of a number of bags that can be used to become more familiar with the SWORD2 depositing system.
-They are sorted based on the type of flow that the user may be configured for, please refer to the [Ingest-flow specs] for more detailed information on the different flows that may be used.
-This distinction is made because No-Access flow expects the depositor to provide their own DOI in the dataset metadata. Every other flow only allows for a DOI with the DANS prefix to be submitted and that is minted by DANS. If no such DOI is provided in the `metadata/dataset.xml` the service will mint and register a new DOI with the DANS prefix for the dataset.
+They are sorted based on the type of flow that the user may be configured for, please refer to your DANS account manager to determine which flow your account has been configured for.
+
+The distinction between flows is made because No-Access flow expects the depositor to provide their own DOI in the dataset metadata. Every other flow only allows for a DOI with the DANS prefix to be submitted and that is minted by DANS. If no such DOI is provided in the `metadata/dataset.xml` the service will mint and register a new DOI with the DANS prefix for the dataset.
 
 [Ingest-flow specs]: https://github.com/DANS-KNAW/easy-specs/blob/master/easy-ingest-flow/easy-ingest-flow.md
 
