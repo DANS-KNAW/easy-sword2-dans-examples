@@ -28,11 +28,9 @@ In case the server encountered an unknown error `FAILED` will be returned.
 
 Getting started
 ---------------
+The following is a step-by-step instruction on how to run a simple example using the DANS acceptance test server at https://act.easy.dans.knaw.nl/. 
 
 ### Getting access to the acceptance server
-The following is a step-by-step instruction on how to run these examples using the DANS
-acceptance test server at https://act.easy.dans.knaw.nl/. 
-
 1. From your account manager at DANS request access to the acceptance test server. The account manager will provide the information necessary to connect.
 2. Create an EASY account via https://act.easy.dans.knaw.nl/ui/register.
 3. From your account manager at DANS request the account to be enabled for SWORD deposits.
@@ -97,7 +95,7 @@ Next steps
 
 ### Creating test data
 The easy-sword2 service requires deposits to be sent as zipped bags (see [BagIt]). The EASY archive adds some extra requirements.
-These are documented on the [EASY SWORDv2 deposit documentation page] and [DANS BagIt Profile]. A command line tool called [xmllint] can be used to validate xml files locally.
+These are documented in the [DANS BagIt Profile]. A command line tool called [xmllint] can be used to validate xml files locally.
 
 #### Pre-made examples
 Some examples of bags which meet the specifications of the SWORD depositing interface can be found in the [resources directory]. 
@@ -119,7 +117,6 @@ through the `brew` command. See [this blog post](https://patchbay.tech/2018/03/1
 5. Update the checksums with `bagit makecomplete my-bag my-bag --payloadmanifestalgorithm SHA1`
 6. verify that the bag is valid according to Bagit with `bagit verifyvalid my-bag`
 
-[EASY SWORDv2 deposit documentation page]: https://easy.dans.knaw.nl/doc/sword2.html
 [BagIt]: https://datatracker.ietf.org/doc/draft-kunze-bagit
 [DANS BagIt Profile]: https://github.com/DANS-KNAW/dans-bagit-profile/blob/master/versions/0.0.0.md
 [xmllint]: http://xmlsoft.org/xmllint.html
