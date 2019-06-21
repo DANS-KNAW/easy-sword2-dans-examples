@@ -34,7 +34,7 @@ public class SimpleDeposit {
      * Sends a bag to the easy-sword2 service and tracks its status until it is archived or failure is reported.
      * 
      * @param args
-     *        0. collection URL (Col-IRI), 1. EASY user name, 2. EASY password, 3. bag to send (a directory or a zip file),
+     *        0. collection URL (Col-IRI), 1. EASY user name, 2. EASY password, 3. bag to send (a directory or a zip file)
      */
     public static void main(String[] args) throws Exception {
         if (args.length != 4) {
