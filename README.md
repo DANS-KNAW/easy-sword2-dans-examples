@@ -31,7 +31,9 @@ Getting started
 The following is a step-by-step instruction on how to run a simple example using the DANS acceptance test server at https://demo.easy.dans.knaw.nl/. 
 
 ### Getting access to the acceptance server
-1. From your account manager at DANS request access to the acceptance test server. The account manager will provide the information necessary to connect.
+1. From your account manager at DANS request access to the acceptance test server. The account manager will provide the information necessary to connect. If this
+   information includes a value for the `X-Authorization` header, then create a file called `x-auth-value.txt` in the root of this project and put the value
+   in it.
 2. Create an EASY account via https://demo.easy.dans.knaw.nl/ui/register.
 3. From your account manager at DANS request the account to be enabled for SWORD deposits.
 4. From your account manager at DANS inquire which flow (see next section) the account is configured for.
