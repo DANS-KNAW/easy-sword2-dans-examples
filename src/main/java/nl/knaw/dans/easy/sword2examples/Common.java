@@ -66,7 +66,7 @@ public class Common {
 
     /**
      * Assumes the entity is UTF-8 encoded text and reads it into a String.
-     * 
+     *
      * @param entity
      *        the http entity object
      * @return the entire http entity as a string
@@ -93,7 +93,7 @@ public class Common {
         while (true) {
             Thread.sleep(10000);
             System.out.print("Checking deposit status ... ");
-            response = http.execute(new HttpGet(statUri));
+            response = http.execute(addXAuthorizationToRequest(new HttpGet(statUri)));
             if (response.getStatusLine().getStatusCode() != 200) {
                 System.out.println("Stat-IRI returned " + response.getStatusLine().getStatusCode());
                 System.exit(1);
@@ -194,19 +194,28 @@ public class Common {
         byte[] chunk = readChunk(dis, size);
         String md5 = new String(Hex.encodeHex(dis.getMessageDigest().digest()));
         HttpUriRequest request = RequestBuilder.create(method).setUri(uri).setConfig(RequestConfig.custom()
-        /*
-         * When using an HTTPS-connection EXPECT-CONTINUE must be enabled, otherwise buffer overflow may follow
-         */
-        .setExpectContinueEnabled(true).build()) //
+            /*
+             * When using an HTTPS-connection EXPECT-CONTINUE must be enabled, otherwise buffer overflow may follow
+             */
+            .setExpectContinueEnabled(true).build()) //
                 .addHeader("Content-Disposition", String.format("attachment; filename=%s", filename)) //
                 .addHeader("Content-MD5", md5) //
                 .addHeader("Packaging", BAGIT_URI) //
                 .addHeader("In-Progress", Boolean.toString(inProgress)) //
                 .setEntity(new ByteArrayEntity(chunk, ContentType.create(mimeType))) //
                 .build();
+        addXAuthorizationToRequest(request);
         CloseableHttpResponse response = http.execute(request);
         // System.out.println("Response received.");
         return response;
+    }
+
+    private static HttpUriRequest addXAuthorizationToRequest(HttpUriRequest request) throws Exception {
+        File autValueFile = new File("x-auth-value.txt");
+        if (autValueFile.exists()) {
+            request.addHeader("X-Authorization", FileUtils.readFileToString(autValueFile).trim());
+        }
+        return request;
     }
 
     public static void setBagIsVersionOf(File bagDir, URI versionOfUri) throws Exception {

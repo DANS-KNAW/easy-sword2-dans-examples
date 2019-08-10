@@ -21,6 +21,7 @@
 /.vagrant/
 /.yum-repo
 /.dans.knaw.nl-yum-repo
+/x-auth-value.txt
 *.retry
 
 # Eclipse
