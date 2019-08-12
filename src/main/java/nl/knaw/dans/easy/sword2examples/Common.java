@@ -205,7 +205,7 @@ public class Common {
                 .setEntity(new ByteArrayEntity(chunk, ContentType.create(mimeType))) //
                 .build();
         addXAuthorizationToRequest(request);
-        CloseableHttpResponse response = http.execute(request);
+        CloseableHttpResponse response = http.execute(addXAuthorizationToRequest(request));
         // System.out.println("Response received.");
         return response;
     }
