@@ -204,7 +204,6 @@ public class Common {
                 .addHeader("In-Progress", Boolean.toString(inProgress)) //
                 .setEntity(new ByteArrayEntity(chunk, ContentType.create(mimeType))) //
                 .build();
-        addXAuthorizationToRequest(request);
         CloseableHttpResponse response = http.execute(addXAuthorizationToRequest(request));
         // System.out.println("Response received.");
         return response;
