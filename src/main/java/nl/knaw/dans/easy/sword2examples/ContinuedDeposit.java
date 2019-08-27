@@ -86,7 +86,8 @@ public class ContinuedDeposit {
             response = Common.sendChunk(dis, chunkSize, "POST", seIri, "bag.zip." + count++, "application/octet-stream", http, remaining > chunkSize);
             remaining -= chunkSize;
             bodyText = Common.readEntityAsString(response.getEntity());
-            if (response.getStatusLine().getStatusCode() != 200) {
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != 200 && statusCode != 301) {
                 System.err.println("FAILED. Status = " + response.getStatusLine());
                 System.err.println("Response body follows:");
                 System.err.println(bodyText);
@@ -97,6 +98,7 @@ public class ContinuedDeposit {
 
         // 4. Get the statement URL. This is the URL from which to retrieve the current status of the deposit.
         System.out.println("Retrieving Statement IRI (Stat-IRI) from deposit receipt ...");
+        System.out.println(bodyText); // TODO get the target of the redirected content
         receipt = Common.parse(bodyText);
         Link statIriLink = receipt.getLink("http://purl.org/net/sword/terms/statement");
         IRI statIri = statIriLink.getHref();
