@@ -24,7 +24,7 @@
         <ddm:created>2015-09-09</ddm:created>
         <ddm:available>2030-01-01</ddm:available>
         <ddm:audience>D23320</ddm:audience>
-        <ddm:accessRights>OPEN_ACCESS</ddm:accessRights>
+        <ddm:accessRights>NO_ACCESS</ddm:accessRights>
     </ddm:profile>
     <ddm:dcmiMetadata>
         <dcterms:identifier xsi:type="id-type:DOI">10.17026/test-embargo-example</dcterms:identifier>

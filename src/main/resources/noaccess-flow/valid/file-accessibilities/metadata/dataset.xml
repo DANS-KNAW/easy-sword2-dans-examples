@@ -24,7 +24,7 @@
         <ddm:created>2015-09-09</ddm:created>
         <ddm:available>2015-09-08</ddm:available>
         <ddm:audience>D16300</ddm:audience>
-        <ddm:accessRights>OPEN_ACCESS_FOR_REGISTERED_USERS</ddm:accessRights>
+        <ddm:accessRights>NO_ACCESS</ddm:accessRights>
     </ddm:profile>
     <ddm:dcmiMetadata>
         <dcterms:identifier xsi:type="id-type:DOI">10.17026/test-accessibility-example</dcterms:identifier>
