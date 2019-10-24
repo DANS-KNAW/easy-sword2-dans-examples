@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files xmlns:dcterms="http://purl.org/dc/terms/">
+    <file filepath="data/EICAR-virus">
+        <dcterms:title>EICAR virus</dcterms:title>
+        <dcterms:description>This file should not make it past the easy-ingest-flow. If it does it means the antivirus is disabled.</dcterms:description>
+        <dcterms:format>text/plain</dcterms:format>
+        <dcterms:created>2019-24-10</dctierms:created>
+    </file>
+</files>
+
