@@ -48,8 +48,7 @@ public class SimpleDeposit {
         final String pw = args[2];
         final String bagFile = args[3];
 
-        File tempCopy = Common.copyToTarget(new File(bagFile));
-        depositPackage(tempCopy, colIri, uid, pw);
+        depositPackage(new File(bagFile), colIri, uid, pw);
     }
 
     public static URI depositPackage(File bag, IRI colIri, String uid, String pw) throws Exception {
