@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2016-17 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+ * Copyright (C) 2016 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package nl.knaw.dans.easy.sword2examples;
 import org.apache.abdera.i18n.iri.IRI;
 import org.apache.abdera.model.Entry;
 import org.apache.abdera.model.Link;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;
 
@@ -26,7 +27,6 @@ import java.io.FileInputStream;
 import java.net.URI;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
-import java.util.UUID;
 
 public class SimpleDeposit {
 
@@ -48,7 +48,8 @@ public class SimpleDeposit {
         final String pw = args[2];
         final String bagFile = args[3];
 
-        depositPackage(new File(bagFile), colIri, uid, pw);
+        File tempCopy = Common.copyToTarget(new File(bagFile));
+        depositPackage(tempCopy, colIri, uid, pw);
     }
 
     public static URI depositPackage(File bag, IRI colIri, String uid, String pw) throws Exception {
@@ -59,7 +60,7 @@ public class SimpleDeposit {
             zipFile.delete();
             Common.zipDirectory(bag, zipFile);
         } else {
-            zipFile = bag;
+            zipFile = new File(FilenameUtils.removeExtension(bag.toString()));
         }
 
         // 1. Set up stream for calculating MD5

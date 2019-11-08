@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2016-17 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+ * Copyright (C) 2016 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package nl.knaw.dans.easy.sword2examples;
 
 import org.apache.abdera.i18n.iri.IRI;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.net.URI;
