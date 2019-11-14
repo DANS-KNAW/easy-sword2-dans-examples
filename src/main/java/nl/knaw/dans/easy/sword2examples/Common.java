@@ -66,9 +66,11 @@ public class Common {
     /**
      * Assumes the entity is UTF-8 encoded text and reads it into a String.
      *
-     * @param entity the http entity object
+     * @param entity
+     *        the http entity object
      * @return the entire http entity as a string
-     * @throws IOException if an I/O error occurs
+     * @throws IOException
+     *         if an I/O error occurs
      */
     public static String readEntityAsString(HttpEntity entity) throws IOException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -120,26 +122,26 @@ public class Common {
                         List<String> dois = getDois(entries.get(0));
                         int numDois = dois.size();
                         switch (numDois) {
-                            case 1:
-                                System.out.print(" With DOI: [" + dois.get(0) + "]. ");
-                                break;
-                            case 0:
-                                System.out.println("WARNING: No DOI found");
-                                break;
+                        case 1:
+                            System.out.print(" With DOI: [" + dois.get(0) + "]. ");
+                            break;
+                        case 0:
+                            System.out.println("WARNING: No DOI found");
+                            break;
 
-                            default:
-                                System.out.println("WARNING: More than one DOI found (" + numDois + "): ");
-                                boolean first = true;
-                                for (String doi : dois) {
-                                    if (first)
-                                        first = false;
-                                    else
-                                        System.out.print(", ");
-                                    System.out.print(doi + "");
+                        default:
+                            System.out.println("WARNING: More than one DOI found (" + numDois + "): ");
+                            boolean first = true;
+                            for (String doi : dois) {
+                                if (first)
+                                    first = false;
+                                else
+                                    System.out.print(", ");
+                                System.out.print(doi + "");
 
-                                }
-                                System.out.println();
-                                break;
+                            }
+                            System.out.println();
+                            break;
                         }
                     } else {
                         System.out.println("WARNING: Found (" + entries.size() + ") entry's; should be ONE and only ONE");
@@ -190,10 +192,10 @@ public class Common {
         byte[] chunk = readChunk(dis, size);
         String md5 = new String(Hex.encodeHex(dis.getMessageDigest().digest()));
         HttpUriRequest request = RequestBuilder.create(method).setUri(uri).setConfig(RequestConfig.custom()
-                /*
-                 * When using an HTTPS-connection EXPECT-CONTINUE must be enabled, otherwise buffer overflow may follow
-                 */
-                .setExpectContinueEnabled(true).build()) //
+            /*
+             * When using an HTTPS-connection EXPECT-CONTINUE must be enabled, otherwise buffer overflow may follow
+             */
+            .setExpectContinueEnabled(true).build()) //
                 .addHeader("Content-Disposition", String.format("attachment; filename=%s", filename)) //
                 .addHeader("Content-MD5", md5) //
                 .addHeader("Packaging", BAGIT_URI) //
