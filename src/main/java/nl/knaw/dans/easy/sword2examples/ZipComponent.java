@@ -20,7 +20,7 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-public class FileUnzipper {
+public class ZipComponent {
 
     public static String getBaseDirName(String zipFilePath) throws Exception {
 

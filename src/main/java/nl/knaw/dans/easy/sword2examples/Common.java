@@ -33,7 +33,6 @@ import org.apache.abdera.model.Link;
 import org.apache.abdera.parser.Parser;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.auth.AuthScope;
@@ -250,7 +249,7 @@ public class Common {
             } else {
                 File zipInTarget = new File("target", dir.getName());
                 FileUtils.deleteQuietly(zipInTarget);
-                dirInTarget = new File("target", FileUnzipper.getBaseDirName(dir.toString()));
+                dirInTarget = new File("target", ZipComponent.getBaseDirName(dir.toString()));
                 FileUtils.deleteQuietly(dirInTarget);
                 zf.extractAll("target");
             }
