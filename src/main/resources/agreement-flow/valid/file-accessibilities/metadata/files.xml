@@ -25,11 +25,6 @@
         <dcterms:created>2016-11-09</dcterms:created>
         <accessibleToRights>ANONYMOUS</accessibleToRights>
     </file>
-    <file filepath="data/accessibilities/group.txt">
-        <dcterms:format>text/plain</dcterms:format>
-        <dcterms:created>2016-11-09</dcterms:created>
-        <accessibleToRights>RESTRICTED_GROUP</accessibleToRights>
-    </file>
     <file filepath="data/accessibilities/known.txt">
         <dcterms:format>text/plain</dcterms:format>
         <dcterms:created>2016-11-09</dcterms:created>

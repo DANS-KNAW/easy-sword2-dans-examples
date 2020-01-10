@@ -2,7 +2,6 @@
 4ae4fb20ee161b8026a468160553e623dcea4914  data/random images/image02.jpeg
 f375ad2556c094df000af13f77e40716403fc62f  data/accessibilities/known.txt
 4f5ea58e1c7e617f2190f7d9cf33637bc14aae02  data/accessibilities/anonymous.txt
-82e24a7ae6d6d09b2397e4d2852346eec4572c11  data/accessibilities/group.txt
 0a66ea77834e337e28a043db6d6f3d745c944593  data/random images/image03.jpeg
 f100629544e98ad21503b04a276fe6185cb4e9d2  data/random images/image01.png
 d424a7651d651e8c512f18eadf7eaf86ccc84b2b  data/accessibilities/request.txt
