@@ -15,7 +15,6 @@
  */
 package nl.knaw.dans.easy.sword2examples;
 
-import java.io.IOException;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -24,17 +23,21 @@ public class ZipComponent {
 
     public static String getBaseDirName(String zipFilePath) throws Exception {
 
-        String output = null;
-        try {
-            ZipFile zipFile = new ZipFile(zipFilePath);
+        try (ZipFile zipFile = new ZipFile(zipFilePath)) {
+
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
-
             ZipEntry entry = entries.nextElement();
-            output = entry.getName().split("\\/")[0];
-        }
-        catch (IOException ex) {
+            String entryDir[] = entry.getName().split("/", 0);
 
+            while (entries.hasMoreElements()) {
+                ZipEntry nextEntry = entries.nextElement();
+                String[] nextEntryDir = nextEntry.getName().split("/", 0);
+                if (!entryDir[0].equals(nextEntryDir[0])) {
+                    System.err.println("A bag may only contain a single root directory");
+                    System.exit(1);
+                }
+            }
+            return entryDir[0];
         }
-        return output;
     }
 }
