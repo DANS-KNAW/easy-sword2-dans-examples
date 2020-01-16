@@ -246,7 +246,7 @@ public class Common {
         } else {
             ZipFile zf = new ZipFile(dir);
             if (!zf.isValidZipFile()) {
-                System.err.println("The submitted bag is not a valid directory or Zipfile");
+                System.err.println("ERROR: The submitted bag is not a valid directory or Zipfile");
                 System.exit(1);
             } else {
                 File zipInTarget = new File("target", dir.getName());

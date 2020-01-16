@@ -33,7 +33,7 @@ public class ZipComponent {
                 ZipEntry nextEntry = entries.nextElement();
                 String[] nextEntryDir = nextEntry.getName().split("/", 0);
                 if (!entryDir[0].equals(nextEntryDir[0])) {
-                    System.err.println("A bag may only contain a single root directory");
+                    System.err.println("ERROR: A bag may only contain a single root directory, please make sure " + zipFilePath + " adheres to the format. Aborting dataset submission." );
                     System.exit(1);
                 }
             }
