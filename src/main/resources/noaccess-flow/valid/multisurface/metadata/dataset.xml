@@ -12,7 +12,7 @@
         <ddm:created>2017-01-01T00:01:02+01:00</ddm:created>
         <ddm:available>2017-01-01T00:01:02+01:00</ddm:available>
         <ddm:audience>D37000</ddm:audience>
-        <ddm:accessRights>OPEN_ACCESS</ddm:accessRights>
+        <ddm:accessRights>NO_ACCESS</ddm:accessRights>
     </ddm:profile>
     <ddm:dcmiMetadata>
         <dcx-gml:spatial>
