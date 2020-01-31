@@ -38,14 +38,14 @@ public class SequenceSimpleDeposit {
 
         System.out.println("Sending base revision of dataset ...");
         File baseBagDir = new File(bagNames[0]);
-        File tempCopy = Common.copyToTarget(baseBagDir);
-        URI baseUri = SimpleDeposit.depositPackage(tempCopy, colIri, uid, pw);
+        File bagDirInTarget = Common.copyToBagDirectoryInTarget(baseBagDir);
+        URI baseUri = SimpleDeposit.depositPackage(bagDirInTarget, colIri, uid, pw);
 
         for (int i = 1; i < bagNames.length; ++i) {
             File bagDir = new File(bagNames[i]);
-            tempCopy = Common.copyToTarget(bagDir);
-            Common.setBagIsVersionOf(tempCopy, baseUri);
-            SimpleDeposit.depositPackage(tempCopy, colIri, uid, pw);
+            bagDirInTarget = Common.copyToBagDirectoryInTarget(bagDir);
+            Common.setBagIsVersionOf(bagDirInTarget, baseUri);
+            SimpleDeposit.depositPackage(bagDirInTarget, colIri, uid, pw);
         }
     }
 }

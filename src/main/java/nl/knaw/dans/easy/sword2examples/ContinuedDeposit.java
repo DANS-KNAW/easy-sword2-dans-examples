@@ -39,20 +39,16 @@ public class ContinuedDeposit {
         final String uid = args[1];
         final String pw = args[2];
         final int chunkSize = Integer.parseInt(args[3]);
-        final String bagFile = args[4];
+        final String bag = args[4];
 
-        depositPackage(new File(bagFile), colIri, uid, pw, chunkSize);
+        File bagDirInTarget = Common.copyToBagDirectoryInTarget(new File(bag));
+        depositPackage(bagDirInTarget, colIri, uid, pw, chunkSize);
     }
 
-    public static URI depositPackage(File bag, IRI colIri, String uid, String pw, int chunkSize) throws Exception {
-        File zipFile = null;
-        if (bag.isDirectory()) {
-            zipFile = new File(bag.getAbsolutePath() + ".zip");
-            zipFile.delete();
-            Common.zipDirectory(bag, zipFile);
-        } else {
-            zipFile = bag;
-        }
+    public static URI depositPackage(File bagDir, IRI colIri, String uid, String pw, int chunkSize) throws Exception {
+        File zipFile = new File(bagDir.getAbsolutePath() + ".zip");
+        zipFile.delete();
+        Common.zipDirectory(bagDir, zipFile);
 
         // 1. Set up stream for calculating MD5
         FileInputStream fis = new FileInputStream(zipFile);

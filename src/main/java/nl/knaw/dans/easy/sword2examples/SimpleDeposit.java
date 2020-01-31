@@ -48,20 +48,16 @@ public class SimpleDeposit {
         final String pw = args[2];
         final String bagFile = args[3];
 
-        File tempCopy = Common.copyToTarget(new File(bagFile));
-        depositPackage(tempCopy, colIri, uid, pw);
+        File bagDirInTarget = Common.copyToBagDirectoryInTarget(new File(bagFile));
+        depositPackage(bagDirInTarget, colIri, uid, pw);
     }
 
-    public static URI depositPackage(File bag, IRI colIri, String uid, String pw) throws Exception {
+    public static URI depositPackage(File bagDir, IRI colIri, String uid, String pw) throws Exception {
         // 0. Zip the bag if it isn't yet.
         File zipFile = null;
-        if (bag.isDirectory()) {
-            zipFile = new File(bag.getAbsolutePath() + ".zip");
-            zipFile.delete();
-            Common.zipDirectory(bag, zipFile);
-        } else {
-            zipFile = new File(FilenameUtils.removeExtension(bag.toString()));
-        }
+        zipFile = new File(bagDir.getAbsolutePath() + ".zip");
+        zipFile.delete();
+        Common.zipDirectory(bagDir, zipFile);
 
         // 1. Set up stream for calculating MD5
         MessageDigest md = MessageDigest.getInstance("MD5");

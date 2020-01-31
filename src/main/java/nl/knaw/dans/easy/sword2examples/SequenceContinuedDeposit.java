@@ -40,14 +40,14 @@ public class SequenceContinuedDeposit {
 
         System.out.println("Sending base revision of dataset ...");
         File baseBagDir = new File(bagNames[0]);
-        File tempCopy = Common.copyToTarget(baseBagDir);
-        URI baseUri = ContinuedDeposit.depositPackage(tempCopy, colIri, uid, pw, chunkSize);
+        File bagDirInTarget = Common.copyToBagDirectoryInTarget(baseBagDir);
+        URI baseUri = ContinuedDeposit.depositPackage(bagDirInTarget, colIri, uid, pw, chunkSize);
 
         for (int i = 1; i < bagNames.length; ++i) {
             File bagDir = new File(bagNames[i]);
-            tempCopy = Common.copyToTarget(bagDir);
-            Common.setBagIsVersionOf(tempCopy, baseUri);
-            ContinuedDeposit.depositPackage(tempCopy, colIri, uid, pw, chunkSize);
+            bagDirInTarget = Common.copyToBagDirectoryInTarget(bagDir);
+            Common.setBagIsVersionOf(bagDirInTarget, baseUri);
+            ContinuedDeposit.depositPackage(bagDirInTarget, colIri, uid, pw, chunkSize);
         }
     }
 }

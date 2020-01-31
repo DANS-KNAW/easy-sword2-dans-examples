@@ -237,21 +237,26 @@ public class Common {
         zf.addFolder(dir, parameters);
     }
 
-    public static File copyToTarget(File dir) throws Exception {
+    /**
+     * Copies bag to the folder "target" and extracts it, if it is a zipfile. Existing sub-directory of the same name will be overwritten.
+     * @param bag the bag file or folder
+     * @return a bag directory under the "target" folder
+     */
+    public static File copyToBagDirectoryInTarget(File bag) throws Exception {
         File dirInTarget = null;
-        if (dir.isDirectory()) {
-            dirInTarget = new File("target", dir.getName());
+        if (bag.isDirectory()) {
+            dirInTarget = new File("target", bag.getName());
             FileUtils.deleteQuietly(dirInTarget);
-            FileUtils.copyDirectory(dir, dirInTarget);
+            FileUtils.copyDirectory(bag, dirInTarget);
         } else {
-            ZipFile zf = new ZipFile(dir);
+            ZipFile zf = new ZipFile(bag);
             if (!zf.isValidZipFile()) {
                 System.err.println("ERROR: The submitted bag is not a valid directory or Zipfile");
                 System.exit(1);
             } else {
-                File zipInTarget = new File("target", dir.getName());
+                File zipInTarget = new File("target", bag.getName());
                 FileUtils.deleteQuietly(zipInTarget);
-                dirInTarget = new File("target", ZipComponent.getBaseDirName(dir.toString()));
+                dirInTarget = new File("target", ZipUtil.getBaseDirName(bag.toString()));
                 FileUtils.deleteQuietly(dirInTarget);
                 zf.extractAll("target");
             }

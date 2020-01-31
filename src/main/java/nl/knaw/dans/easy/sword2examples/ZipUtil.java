@@ -19,7 +19,7 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-public class ZipComponent {
+public class ZipUtil {
 
     public static String getBaseDirName(String zipFilePath) throws Exception {
 
@@ -27,7 +27,7 @@ public class ZipComponent {
 
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             ZipEntry entry = entries.nextElement();
-            String entryDir[] = entry.getName().split("/", 0);
+            String[] entryDir = entry.getName().split("/", 0);
 
             while (entries.hasMoreElements()) {
                 ZipEntry nextEntry = entries.nextElement();
