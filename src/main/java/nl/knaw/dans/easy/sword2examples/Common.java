@@ -20,7 +20,7 @@ import gov.loc.repository.bagit.BagFactory;
 import gov.loc.repository.bagit.BagInfoTxt;
 import gov.loc.repository.bagit.transformer.impl.TagManifestCompleter;
 import gov.loc.repository.bagit.writer.impl.FileSystemWriter;
-import net.lingala.zip4j.core.ZipFile;
+import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.model.ZipParameters;
 import org.apache.abdera.Abdera;
 import org.apache.abdera.i18n.iri.IRI;
@@ -232,7 +232,6 @@ public class Common {
         if (zipFile.exists())
             zipFile.delete();
         ZipFile zf = new ZipFile(zipFile);
-        zf.setFileNameCharset(StandardCharsets.UTF_8.name());
         ZipParameters parameters = new ZipParameters();
         zf.addFolder(dir, parameters);
     }
