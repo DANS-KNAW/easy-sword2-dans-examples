@@ -42,12 +42,13 @@ different flows. The flow configured for your account will be one of the followi
 
 * `Agreement` - The datasets will be disseminated by DANS. DANS will mint DOIs for the datasets.
 * `NoAccess` - The files are not to be disseminated by DANS. The depositor organization must mint DOIs for the datasets.
+* `NoDoi` - The files are not to be disseminated by DANS. The depositor organization must _not_ mint DOIs for the datasets, DANS will _not_ mint DOIs for the datasets.
 
 ### Depositing your first dataset
 
 #### Running the SimpleDeposit example
 
-1. If your account is configured for `NoAccess` the following extra step is required (for `Agreement` you can skip this): 
+1. If your account is configured for `NoAccess` the following extra step is required (for `Agreement` you can skip this, for `NoDoi` you can use the `agreement-flow` examples): 
    1. Copy the directory `src/main/resources/noaccess-flow/valid/audiences` to a temporary directory, say `/tmp/audiences`.
    2. Change the DOI in `audiences/metadata/dataset.xml` to another value (it must be unique).
    3. Calculate the MD5 checksum for `audiences/metadata/dataset.xml` 
