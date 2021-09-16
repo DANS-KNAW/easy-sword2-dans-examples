@@ -185,18 +185,21 @@ The project directory contains a `run.sh` script that can be used to invoke the 
 	./run.sh SequenceContinued https://demo.easy.dans.knaw.nl/sword2/collection/1 myuser mypassword chunksize bag1 bag2 bag3
 
 ## DANS reports
-DANS sends out two e-mails concerning the status of the deposits in the deposit area.
+DANS sends out e-mails concerning the status of the deposits both in the deposit area and the DANS archives.
+
+`DOI report for prefix <prefix>`
+* `<prefix>-doi-report-<date>.csv`: An overview of all the doi with this prefix in the DANS archives.
 
 `DANS-EASY Error report: status of failed EASY deposits` this e-mail contains two reports about failed deposits: 
-* `DANS-EASY-report-error-yesterday-<date>.csv`: A report with all the FAILED / REJECTED / INVALID deposits of the last day. This 
-* `DANS-EASY-report-error-<date>.csv`: A report with all the failed deposits that are in the deposit area. In case a `REJECTED` deposit has been resend, the old one is still mentioned here.
+* `DANS-EASY-report-error-yesterday-<date>.csv`: A deposit-report with all the FAILED / REJECTED / INVALID deposits of the last day. This 
+* `DANS-EASY-report-error-<date>.csv`: A deposit-report with all the failed deposits that are in the deposit area. In case a `REJECTED` deposit has been resend, the old one is still mentioned here.
 
 `DANS-EASY Report: status of EASY deposits`, Een e-mail met rapportages over alle deposits in de deposit area:
-* `DANS-EASY-report-full-yesterday-<date>.csv`: A report containing all the deposits made in the last day, both `ARCHIVED` and otherwise.
+* `DANS-EASY-report-full-yesterday-<date>.csv`: A deposit-report containing all the deposits made in the last day, both `ARCHIVED` and otherwise.
 * `DANS-EASY-report-summary-<date>.txt`: A summary of the data that's being held in the deposit area, split into the different Statuses
 * `DANS-EASY-report-summary-yesterday-<date>.txt`: A summary of the data that's being added to the deposit area in the last day, split into the different Statuses.
 
-The reports are csv files with the following columns:
+The deposit-reports are csv files with the following columns:
 
 column                     | description
 ---------------------------|------------
