@@ -35,6 +35,7 @@ The following is a step-by-step instruction on how to run a simple example using
 2. Create an EASY account via https://demo.easy.dans.knaw.nl/ui/register.
 3. From your account manager at DANS request the account to be enabled for SWORD deposits.
 4. From your account manager at DANS inquire which flow (see next section) the account is configured for.
+5. You will start receiving reports via e-mail concerning the deposits you are sending.
 
 #### Flow types
 Depending on the type of agreement that the depositor organization has with DANS, your deposits will be processed by 
@@ -123,14 +124,14 @@ The deposit will go through a number of statuses. The following statuses are pos
 
 State                         | Description
 ------------------------------|------------------------------------------------------------
-`DRAFT`                       | Open for additional data.
-`UPLOADED`                    | Completely uploaded, closed for additional data and waiting to be finalized.
-`FINALIZING`                  | Closed and being checked for validity.
-`INVALID`                     | Does **not** contain a valid bag.
-`SUBMITTED`                   | Valid and waiting for processing, or currently being processed by the EASY Ingest Flow.
-`REJECTED`                    | Did not meet the requirements of EASY Ingest Flow for this type of deposit.
-`FAILED`                      | Failed to be archived because of some unexpected condition.
-`ARCHIVED`                    | Successfully archived in the data vault.
+`DRAFT`                       | The deposit is being prepared by the depositor. It is not submitted to the archive yet and still open for additional data.
+`UPLOADED`                    | The deposit is in the process of being submitted. It is waiting to be finalized. The data is completely uploaded. It will automatically move to the next stage and the status will be updated accordingly.
+`FINALIZING`                  | The deposit is in the process of being submitted. It is being checked for validity. It will automatically move to the next stage and the status will be updated accordingly.
+`INVALID`                     | The deposit is not accepted by the archive as the submitted bag is not valid. The description will detail what part of the bag is not according to specifications. The depositor is asked to fix the bag and resubmit the deposit.
+`SUBMITTED`                   | The deposit is valid and being processed by the Ingest Flow. It will automatically move to the next stage and the status will be updated accordingly.
+`REJECTED`                    | The deposit does not meet the requirements of the Ingest Flow for its type. The description will detail what part of the deposit is not according to specifications. The depositor is asked to fix and resubmit the deposit.
+`FAILED`                      | The deposit failed to be archive because of an unexpected condition during the Ingest Flow. DANS monitors the FAILED reports and aims to fix these issues as readily as possible. A following report should typically list the FAILED deposits as ARCHIVED.
+`ARCHIVED`                    | The deposit is successfully archived in the data vault.
 
 If an error occurs the deposit will end up INVALID, REJECTED (client error) or FAILED (server error). 
 The text of the `category` element will contain details about the state. 
@@ -182,6 +183,40 @@ The project directory contains a `run.sh` script that can be used to invoke the 
 	./run.sh Continued https://demo.easy.dans.knaw.nl/sword2/collection/1 myuser mypassword chunksize bag
 	./run.sh SequenceSimple https://demo.easy.dans.knaw.nl/sword2/collection/1 myuser mypassword bag1 bag2 bag3
 	./run.sh SequenceContinued https://demo.easy.dans.knaw.nl/sword2/collection/1 myuser mypassword chunksize bag1 bag2 bag3
+
+## DANS reports
+DANS sends out two e-mails concerning the status of the deposits in the deposit area.
+
+`DANS-EASY Error report: status of failed EASY deposits` this e-mail contains two reports about failed deposits: 
+* `DANS-EASY-report-error-yesterday-<date>.csv`: A report with all the FAILED / REJECTED / INVALID deposits of the last day. This 
+* `DANS-EASY-report-error-<date>.csv`: A report with all the failed deposits that are in the deposit area. In case a `REJECTED` deposit has been resend, the old one is still mentioned here.
+
+`DANS-EASY Report: status of EASY deposits`, Een e-mail met rapportages over alle deposits in de deposit area:
+* `DANS-EASY-report-full-yesterday-<date>.csv`: A report containing all the deposits made in the last day, both `ARCHIVED` and otherwise.
+* `DANS-EASY-report-summary-<date>.txt`: A summary of the data that's being held in the deposit area, split into the different Statuses
+* `DANS-EASY-report-summary-yesterday-<date>.txt`: A summary of the data that's being added to the deposit area in the last day, split into the different Statuses.
+
+The reports are csv files with the following columns:
+
+column                     | description
+---------------------------|------------
+DEPOSITOR                  | the account name of the depositor
+DEPOSIT_ID                 | the UUID under which the deposit is registered at DANS-EASY
+BAG_NAME                   | the directory name of the bag
+DEPOSIT_STATE              | the state of the deposit, see the `Statuses` for possible values
+ORIGIN                     | the source of the deposit, either SWORD or an internal source
+LOCATION                   | the current location of the deposit
+DANS_DOI                   | the DOI that DANS-EASY assigns to the deposit, if any
+ORGANIZATIONAL_ID          | the organizational identifier given by the depositor in the bag-info.txt, if any
+DOI_REGISTERED             | whether the DANS_DOI has been registered at Datacite
+FEDORA_ID                  | the identifier of the deposit in the web interface. 
+DATAMANAGER                | the name of the datamanager assigned to the deposit, or `n/a` otherwise
+DEPOSIT_CREATION_TIMESTAMP | the `Created` timestamp as given in the bag-info.txt
+DEPOSIT_UPDATE_TIMESTAMP   | the timestamp of the last update on this deposit during the ingest into the DANS archive
+DESCRIPTION                | a description of the current state of the deposit. To be used together with DEPOSIT_STATE 
+NBR_OF_CONTINUED_DEPOSITS  | the number of packages received for this deposit so far
+STORAGE_IN_BYTES           | the amount of data stored in the deposit area for this deposit
+
 
 [Java Example programs]: https://github.com/DANS-KNAW/easy-sword2-dans-examples/tree/master/src/main/java/nl/knaw/dans/easy/sword2examples
 [resources directory]: https://github.com/DANS-KNAW/easy-sword2-dans-examples/tree/master/src/main/resources
