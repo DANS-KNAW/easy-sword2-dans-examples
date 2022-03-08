@@ -28,7 +28,7 @@ In case the server encountered an unknown error `FAILED` will be returned.
 
 Getting started
 ---------------
-The following is a step-by-step instruction on how to run a simple example using the DANS acceptance test server at https://demo.easy.dans.knaw.nl/home. 
+The following is a step-by-step instruction on how to run a simple example using the DANS acceptance test server at https://demo.easy.dans.knaw.nl. 
 
 ### Getting access to the acceptance server
 1. From your account manager at DANS request access to the acceptance test server. The account manager will provide the information necessary to connect. 
@@ -194,7 +194,7 @@ DANS sends out e-mails concerning the status of the deposits both in the deposit
 * `DANS-EASY-report-error-yesterday-<date>.csv`: A deposit-report with all the FAILED / REJECTED / INVALID deposits of the last day. 
 * `DANS-EASY-report-error-<date>.csv`: A deposit-report with all the failed deposits that are in the deposit area. In case a `REJECTED` deposit has been resend, the old one is still mentioned here.
 
-`DANS-EASY Report: status of EASY deposits`, A report email with all deposits in the deposit area:
+`DANS-EASY Report: status of EASY deposits`, An e-mail with reports on all deposits in the deposit area:
 * `DANS-EASY-report-full-yesterday-<date>.csv`: A deposit-report containing all the deposits made in the last day, both `ARCHIVED` and otherwise.
 * `DANS-EASY-report-summary-<date>.txt`: A summary of the data that's being held in the deposit area, split into the different Statuses
 * `DANS-EASY-report-summary-yesterday-<date>.txt`: A summary of the data that's being added to the deposit area in the last day, split into the different Statuses.
