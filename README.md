@@ -6,7 +6,7 @@ The examples in this project show how to implement a client in Java that interac
 Introduction
 ------------
 
-Depositing in EASY via the [SWORD v2.0 protocol] is basically a two-phase process:
+Depositing in EASY via the [SWORD v2.0 protocol](https://sword.cottagelabs.com/previous-versions-of-sword/sword-v2/) is basically a two-phase process:
 
 * Submitting a deposit for ingest.
 * Tracking the state of the deposit as it goes through the ingest-flow, until it reaches ARCHIVED status.
@@ -28,7 +28,7 @@ In case the server encountered an unknown error `FAILED` will be returned.
 
 Getting started
 ---------------
-The following is a step-by-step instruction on how to run a simple example using the DANS acceptance test server at https://demo.easy.dans.knaw.nl/. 
+The following is a step-by-step instruction on how to run a simple example using the DANS acceptance test server at `https://demo.easy.dans.knaw.nl`. 
 
 ### Getting access to the acceptance server
 1. From your account manager at DANS request access to the acceptance test server. The account manager will provide the information necessary to connect. 
@@ -158,7 +158,7 @@ through the `brew` command. See [this blog post](https://patchbay.tech/2018/03/1
 2. Place the data files in the `my-bag/data` directory
 3. Create the `my-bag/metadata/dataset.xml` and `my-bag/metadata/files.xml` add the appropriate metadata. See [DANS BagIt Profile] and the pre-made examples for
    guidance about what constitutes appropriate metadata.
-4. Update the the `my-bag/bag-info.txt` to include the Created date: `Created: yyyy-mm-ddThh:mm:ss.000+00:00`
+4. Update the `my-bag/bag-info.txt` to include the Created date: `Created: yyyy-mm-ddThh:mm:ss.000+00:00`
 5. Update the checksums with `bagit makecomplete my-bag my-bag --payloadmanifestalgorithm SHA1`
 6. verify that the bag is valid according to Bagit with `bagit verifyvalid my-bag`
 
@@ -191,10 +191,10 @@ DANS sends out e-mails concerning the status of the deposits both in the deposit
 * `<prefix>-doi-report-<date>.csv`: An overview of all the doi with this prefix in the DANS archives.
 
 `DANS-EASY Error report: status of failed EASY deposits` this e-mail contains two reports about failed deposits: 
-* `DANS-EASY-report-error-yesterday-<date>.csv`: A deposit-report with all the FAILED / REJECTED / INVALID deposits of the last day. This 
+* `DANS-EASY-report-error-yesterday-<date>.csv`: A deposit-report with all the FAILED / REJECTED / INVALID deposits of the last day. 
 * `DANS-EASY-report-error-<date>.csv`: A deposit-report with all the failed deposits that are in the deposit area. In case a `REJECTED` deposit has been resend, the old one is still mentioned here.
 
-`DANS-EASY Report: status of EASY deposits`, Een e-mail met rapportages over alle deposits in de deposit area:
+`DANS-EASY Report: status of EASY deposits`, An e-mail with reports on all deposits in the deposit area:
 * `DANS-EASY-report-full-yesterday-<date>.csv`: A deposit-report containing all the deposits made in the last day, both `ARCHIVED` and otherwise.
 * `DANS-EASY-report-summary-<date>.txt`: A summary of the data that's being held in the deposit area, split into the different Statuses
 * `DANS-EASY-report-summary-yesterday-<date>.txt`: A summary of the data that's being added to the deposit area in the last day, split into the different Statuses.
