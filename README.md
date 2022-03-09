@@ -28,7 +28,7 @@ In case the server encountered an unknown error `FAILED` will be returned.
 
 Getting started
 ---------------
-The following is a step-by-step instruction on how to run a simple example using the DANS acceptance test server at https://demo.easy.dans.knaw.nl. 
+The following is a step-by-step instruction on how to run a simple example using the DANS acceptance test server at `https://demo.easy.dans.knaw.nl`. 
 
 ### Getting access to the acceptance server
 1. From your account manager at DANS request access to the acceptance test server. The account manager will provide the information necessary to connect. 
